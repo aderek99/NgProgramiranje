@@ -1,0 +1,21 @@
+h1 {
+    font-variant: small-caps;
+    color:black;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 30%;
+    margin: 10px;
+}
+
+.card-title{
+    font-size: 1.15rem;
+    font-weight: 700;
+}

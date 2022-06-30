@@ -1,0 +1,47 @@
+<div class="container">
+
+    <form [formGroup]="pretragaForm" (ngSubmit)="Pretrazi()" class="pretraga">
+        <input type="text" placeholder="Unesi termin za pretragu" formControlName="terminPretrage">
+        <!-- <button [disabled]="!pretragaForm.valid" class="btn btn-primary">Pretraži</button> -->
+    </form>
+
+    <button class="btn btn-secondary btn-lg" (click)="SortirajPoImenu()">Sortiraj po imenu</button>
+    <button class="btn btn-secondary btn-lg" (click)="SortirajPoBrojuStanovnika()">Po broju stanovnika</button>
+    <br>
+    <hr>
+
+    <button class="btn btn-outline-secondary" *ngFor="let kontinent of kontinenti" (click)="FilterRegija(kontinent)">{{ kontinent }}</button>
+    <h3>Ukupan broj stanovnika: {{ukupniBrojStanovnika | number}}</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Naziv</th>
+                <th>Glavni grad</th>
+                <th>Regija</th>
+                <th>Pod-regija</th>
+                <th>Površina / km2</th>
+                <th>Broj stanovnika</th>
+                <th>Zastava</th>
+                <th>Kod</th>
+                <th>Članoca UN-a</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let drzava of listaDrzavaZaDisplay">
+                <td>{{ drzava.name.common }}</td>
+                <td><span *ngIf="drzava.capital?.length">{{ drzava.capital[0] }}</span></td>
+                <td>{{ drzava.region }}</td>
+                <td>{{ drzava.subregion }}</td>
+                <td>{{ drzava.area | number}}</td>
+                <td>{{ drzava.population | number}}</td>
+                <td><img class="zastava" src="{{ drzava.flags.png }}"></td>
+                <td>{{ drzava.cioc }}</td>
+                <td>{{ drzava.unMember }}</td>
+                <td> <button class="btn btn-lg btn-primary" [routerLink]="['/drzava-detalji', drzava.cioc]">Detalji</button> </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

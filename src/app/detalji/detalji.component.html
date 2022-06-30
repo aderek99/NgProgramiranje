@@ -1,0 +1,22 @@
+<div class="container" *ngIf="drzava">
+    <h1  class="text-center">{{drzava.name.common}}</h1>
+    <h2  class="text-center">{{drzava.translations.hrv.common}}</h2>
+
+
+    <div  class="zastava text-center">
+        <img src="{{ drzava.flags.png}}" alt="">
+        <img src="{{drzava.coatOfArms.png}}" alt="">
+    </div>
+    <div class="mape text-center">
+        <a href="{{drzava.maps.googleMaps}}" target="_blank">Google mapa</a>
+        <br>
+        <a href="{{drzava.maps.openStreetMaps}}" target="_blank">Open street mapa</a>
+    </div>
+    <div class="granice text-center">
+        <h4>Graniči sa:</h4>
+        <p *ngFor="let granica of drzava.borders">{{granica}}</p>
+    </div>
+    <div class="zona text-center">
+        <p>Vremenska zona: {{drzava.timezones[0]}}</p>
+    </div>
+</div>
